@@ -6,7 +6,7 @@
 <title>PromptHub - AI提示词工具库</title>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0f0f14;--card:#1a1a24;--card-hover:#22223a;--border:#2a2a3e;--primary:#7c5cfc;--primary-light:#9d7cff;--text:#e8e8f0;--text-dim:#8888a0;--accent-pink:#f472b6}
+:root{--bg:#0f0f14;--card:#1a1a24;--card-hover:#22223a;--border:#2a2a3e;--primary:#7c5cfc;--primary-light:#9d7cff;--text:#e8e8f0;--text-dim:#8888a0;--accent-green:#34d399;--accent-pink:#f472b6;--accent-amber:#fbbf24;--accent-blue:#60a5fa}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 header{position:sticky;top:0;z-index:100;background:rgba(15,15,20,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 24px}
 .header-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
@@ -16,17 +16,19 @@ header{position:sticky;top:0;z-index:100;background:rgba(15,15,20,0.85);backdrop
 .hero{text-align:center;padding:40px 0 32px}
 .hero h1{font-size:32px;font-weight:800;background:linear-gradient(135deg,#fff,var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
 .hero p{color:var(--text-dim);font-size:15px;max-width:560px;margin:0 auto;line-height:1.6}
-.tabs{display:flex;gap:12px;justify-content:center;margin-bottom:28px}
-.tab-btn{padding:10px 28px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text-dim);font-size:15px;font-weight:600;cursor:pointer;transition:all .2s}
+.tabs{display:flex;gap:10px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+.tab-btn{padding:10px 24px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text-dim);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
 .tab-btn:hover{border-color:var(--primary);color:var(--text)}
-.tab-btn.active{background:linear-gradient(135deg,var(--primary),#5b3fd4);border-color:transparent;color:#fff;box-shadow:0 4px 20px rgba(124,92,252,0.3)}
+.tab-btn.active-image{background:linear-gradient(135deg,var(--primary),#5b3fd4);border-color:transparent;color:#fff;box-shadow:0 4px 20px rgba(124,92,252,0.3)}
+.tab-btn.active-video{background:linear-gradient(135deg,#f59e0b,#d97706);border-color:transparent;color:#fff;box-shadow:0 4px 20px rgba(245,158,11,0.3)}
+.tab-btn.active-work{background:linear-gradient(135deg,var(--accent-green),#059669);border-color:transparent;color:#fff;box-shadow:0 4px 20px rgba(52,211,153,0.3)}
 .category-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .category-header h2{font-size:20px;font-weight:700}
 .category-header .count{color:var(--text-dim);font-size:14px}
 .refresh-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:14px;cursor:pointer;transition:all .2s}
 .refresh-btn:hover{border-color:var(--primary);background:var(--card-hover)}
-.refresh-btn svg{transition:transform .4s}
-.refresh-btn.spinning svg{transform:rotate(360deg)}
+.refresh-btn.spinning svg{animation:spin .4s ease}
+@keyframes spin{to{transform:rotate(360deg)}}
 .prompt-grid{display:grid;grid-template-columns:1fr;gap:16px}
 .prompt-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
 .prompt-card:hover{border-color:var(--primary);background:var(--card-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,92,252,0.1)}
@@ -35,9 +37,9 @@ header{position:sticky;top:0;z-index:100;background:rgba(15,15,20,0.85);backdrop
 .card-index{display:flex;align-items:center;justify-content:center;min-width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--primary),#5b3fd4);color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .tag{padding:3px 10px;border-radius:6px;font-size:12px;font-weight:500}
-.tag.image{background:rgba(124,92,252,0.15);color:var(--primary-light)}
-.tag.video{background:rgba(245,158,11,0.15);color:#fbbf24}
-.tag.style{background:rgba(91,141,239,0.15);color:#7ca5f0}
+.tag.image-tag{background:rgba(124,92,252,0.15);color:var(--primary-light)}
+.tag.video-tag{background:rgba(245,158,11,0.15);color:#fbbf24}
+.tag.work-tag{background:rgba(52,211,153,0.15);color:var(--accent-green)}
 .prompt-text{color:var(--text-dim);font-size:14px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .prompt-card.expanded .prompt-text{-webkit-line-clamp:unset}
 .expand-hint{color:var(--primary-light);font-size:13px;margin-top:8px}
@@ -53,29 +55,31 @@ footer a{color:var(--primary-light);text-decoration:none}
 <header>
 <div class="header-inner">
 <div class="logo"><span class="logo-badge">P</span>PromptHub</div>
-<span style="color:var(--text-dim);font-size:13px;">数据来源: prompt123.cn 及全网精选</span>
+<span style="color:var(--text-dim);font-size:13px;">精选 AI 图片 · 视频 · 工作提示词</span>
 </div>
 </header>
 <main class="container">
 <div class="hero">
 <h1>AI 提示词工具库</h1>
-<p>精选高质量 AI 图片生成 &amp; 视频生成 Prompt<br>点击卡片查看完整内容 · 刷新即可获取新一批灵感</p>
+<p>精选高质量 AI Prompt 合集<br>点击卡片查看完整内容 · 刷新即可获取新一批灵感</p>
 </div>
 <div class="tabs">
-<button class="tab-btn active" data-tab="image">🖼️ 图片生成</button>
+<button class="tab-btn active-image" data-tab="image">🖼️ 图片生成</button>
 <button class="tab-btn" data-tab="video">🎬 视频生成</button>
+<button class="tab-btn" data-tab="work">💼 日常工作</button>
 </div>
 <div class="category-header">
-<div><h2 id="category-title">🖼️ 图片生成提示词</h2><span class="count" id="prompt-count">共 10 条</span></div>
+<div><h2 id="category-title">🖼️ 图片生成提示词</h2><span class="count" id="prompt-count">共 15 条</span></div>
 <button class="refresh-btn" id="refreshBtn">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
 <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
-</svg>换一批</button>
+</svg>换一批
+</button>
 </div>
 <div class="prompt-grid" id="promptGrid"></div>
 </main>
-<footer><p>PromptHub · 数据来源 <a href="https://prompt123.cn" target="_blank">prompt123.cn</a> 及全网精选 · 仅供学习参考</p></footer>
+<footer><p>PromptHub · 数据来源自全网精选 · 仅供学习参考</p></footer>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -173,36 +177,89 @@ source:"全网精选"},
 {id:115,title:"书店里的猫",tags:["治愈","动物","日常"],
 prompt:"Cozy video tour of a charming independent bookstore with a resident orange cat, the cat walking gracefully between bookshelves, rubbing against vintage leather-bound books, jumping onto a window sill bathed in warm afternoon sunlight, close ups of the cat's whiskers in the golden light, shelves stuffed with books creating a warm cluttered background, a customer gently petting the cat, shots of the cat curled up sleeping on a stack of books, warm amber and cream color palette, 9:16 vertical format, gentle camera movements as if observing quietly, cozy library atmosphere, pure comfort content.",
 source:"全网精选"}
+],
+work: [
+{id:201,title:"邮件撰写（正式汇报）",tags:["邮件","沟通","正式"],
+prompt:"你是一位专业的商务邮件撰写助手。请帮我写一封给[客户/领导]的邮件，主题是[XXX]。核心要点：1... 2... 3...。语气要求[正式/温和/紧迫]。请控制在一屏以内，段落清晰，结尾有明确的行动建议或下一步安排。如果有附件，请在正文中提及。",
+source:"实战精选"},
+{id:202,title:"会议纪要整理",tags:["会议","整理","效率"],
+prompt:"你是一位会议记录专员。以下是一段会议录音转文字：[[粘贴内容]]。请按这个格式整理输出：\n① 会议主题 / 时间 / 参与人\n② 讨论事项（逐条列出，每项标注决策结果）\n③ 遗留问题\n④ 待办事项（负责人 + 截止时间）\n多用短句和要点，不要长段落。",
+source:"实战精选"},
+{id:203,title:"周报/日报生成",tags:["汇报","周报","效率"],
+prompt:"根据我本周完成的工作：[[粘贴工作内容]]。请帮我写一份周报。要求：① 按"本周重点→常规工作→存在问题→下周计划"的结构 ② 重点事项用数据量化（如完成XX单、处理XX条）③ 问题部分只说事实，不写主观感受 ④ 全文控制在300字以内，领导能30秒看完。",
+source:"实战精选"},
+{id:204,title:"数据分析简报",tags:["数据","分析","汇报"],
+prompt:"我有一组[某业务]数据：[[粘贴数据表格]]。请帮我：① 找出3个最明显的数据趋势或变化 ② 标记异常值或拐点 ③ 推测背后可能的业务原因 ④ 给1条可落地的行动建议。不要写分析废话和通用套话，结论优先。输出格式使用加粗标题+短句要点。",
+source:"实战精选"},
+{id:205,title:"方案审阅/挑刺",tags:["方案","审阅","批判"],
+prompt:"请以挑剔的评审领导视角审阅以下方案：[[粘贴方案]]。只输出问题，不要夸奖。检查维度：① 逻辑是否有漏洞 ② 数据支撑是否充足 ③ 风险点是否有遗漏 ④ 执行可行性是否存疑。每条问题后面附带一条改进建议。语气直接、准确，不带情绪。",
+source:"实战精选"},
+{id:206,title:"跨部门沟通消息",tags:["沟通","协作","跨部门"],
+prompt:"我需要向[XX部门]申请[资源/配合/信息]，对方可能不太配合。请帮我拟一段沟通消息。要求：① 先说对方能获得的好处或价值 ② 再提我的具体需求 ③ 尽量降低对方的执行成本（提供模板、整理好数据）④ 语气客气但不卑微，平等协作。控制在150字以内。",
+source:"实战精选"},
+{id:207,title:"任务拆解与排期",tags:["任务","排期","管理"],
+prompt:"我接到一个任务：[[描述任务]]，截止日期是[日期]。请帮我：① 拆解成5-8个子任务 ② 标出每个子任务之间的依赖关系 ③ 标出可能翻车的风险点 ④ 按截止时间倒排，给出每天具体要做什么 ⑤ 至少预留1天buffer。输出为表格或清单格式。",
+source:"实战精选"},
+{id:208,title:"PPT大纲/汇报框架",tags:["PPT","汇报","框架"],
+prompt:"我需要做一个关于[主题]的汇报，受众是[领导/客户/团队]，时长15分钟。请帮我生成PPT大纲。结构如下：\n封面（标题+一句话摘要）→ 目录（3-4个板块）→ 核心论点（每页一个论点，配1-2个数据支撑）→ 问题/挑战 → 行动建议 → Q&A。每页配一句Key Message（20字以内）。",
+source:"实战精选"},
+{id:209,title:"写作润色/精炼",tags:["写作","润色","精炼"],
+prompt:"请帮我润色以下文案：[[粘贴原文]]。要求：① 让逻辑更通顺，段落衔接自然 ② 删掉所有废话、赘余表述、重复用词 ③ 保持专业但不生硬，像活人写的 ④ 保留原文的核心信息，不改原意。润色后附上一个简短的修改说明，列出改了哪些地方。",
+source:"实战精选"},
+{id:210,title:"面试提问清单",tags:["面试","招聘","管理"],
+prompt:"针对[岗位名称]的面试，我需要考察候选人的[核心技能方向]。请用STAR法则帮我设计10个行为面试题，每个问题标注想考察的能力维度（如：解决问题能力、抗压能力、团队协作、专业深度）。再加3个可以快速筛选基础能力的封闭式问题。按"开场→核心技术→软技能→收尾"的顺序排列。",
+source:"实战精选"},
+{id:211,title:"竞品分析框架",tags:["分析","竞品","模板"],
+prompt:"我需要对[产品/服务]做一份竞品分析。请帮我设计一个对比表格框架，包含以下维度：产品功能、定价策略、目标客群、营销渠道、用户口碑。每个维度写清楚：① 对比什么具体内容 ② 用什么标准打分（1-5分）③ 数据来源建议。最后附一个可以直接粘贴到Excel里的空白模板。",
+source:"实战精选"},
+{id:212,title:"工作总结/复盘",tags:["复盘","总结","改进"],
+prompt:"基于以下信息做一份项目复盘：目标[XXX]、实际结果[XXX]、遇到问题[XXX]。输出结构如下：\n一、目标与结果对比（用数据说话）\n二、根因分析（区分内因/外因，每原因附带证据）\n三、做得好的（值得固化）\n四、做得不好的（改进方向）\n五、后续行动计划（具体到谁做什么）\n每部分不超过4行，用短句。附一个3个月后的追查时间点。
+",source:"实战精选"},
+{id:213,title:"AI写会议通知",tags:["会议","通知","行政"],
+prompt:"请帮我写一封会议通知。主题：[XXX会议]。时间：[日期时间]。地点/线上链接：[XXX]。参会人：[XXX]。议程：①... ②... ③...。要求：① 开头说明为什么开这个会（背景和目的）② 议程写清楚每个环节的时间分配 ③ 结尾写清楚需要参会人提前准备什么 ④ 语言简洁，一看就懂。",
+source:"实战精选"},
+{id:214,title:"日报/站会发言模板",tags:["日报","站会","敏捷"],
+prompt:"请根据我今天的工作内容：[[粘贴内容]]，帮我写一段60秒站立会的发言稿。结构：① 昨天做了什么（1句话+结果）② 今天要做什么（1-2件事）③ 需要什么支持/卡点（如果有）。控制在150字以内，口语化，适合快速轮着说。",
+source:"实战精选"},
+{id:215,title:"领导汇报口头稿",tags:["汇报","沟通","口头"],
+prompt:"我需要向[领导]口头汇报[主题]，大概5分钟。请帮我写一份口语化的汇报稿。要求：① 开头30秒先说结论/核心请求（领导没耐心听铺垫）② 中间2分钟讲3个支撑点，每个配1个具体例子或数据 ③ 最后30秒明确提出下一步需要什么支持 ④ 不要书面语，像正常说话一样自然。",
+source:"实战精选"}
 ]
 };
 
-let tab='image', imgIdx=0, vidIdx=0;
+let tab='image', idxMap={image:0, video:0, work:0};
 const BS=10;
 function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
 function batch(data,start,n){const r=[];for(let i=0;i<n;i++)r.push(data[(start+i)%data.length]);return r}
 
 function render(){
-const data=ALL_PROMPTS[tab], start=tab==='image'?imgIdx:vidIdx, items=batch(data,start,BS), grid=document.getElementById('promptGrid');
+const data=ALL_PROMPTS[tab], start=idxMap[tab], items=batch(data,start,BS), grid=document.getElementById('promptGrid');
+const tagClass=tab==='image'?'image-tag':tab==='video'?'video-tag':'work-tag';
+const tabEmoji=tab==='image'?'🖼️':tab==='video'?'🎬':'💼';
+const tabNames={image:'图片生成',video:'视频生成',work:'日常工作'};
 grid.innerHTML=items.map((item,i)=>`
 <div class="prompt-card" onclick="this.classList.toggle('expanded')">
 <div class="prompt-card-header"><h3>${item.title}</h3><span class="card-index">#${String(start+i+1).padStart(2,'0')}</span></div>
-<div class="tags">${item.tags.map(t=>`<span class="tag ${tab}">${t}</span>`).join('')}<span class="source-badge">📡 ${item.source}</span></div>
+<div class="tags">${item.tags.map(t=>\`<span class="tag \${tagClass}">\${t}</span>\`).join('')}<span class="source-badge">📡 ${item.source}</span></div>
 <div class="prompt-text">${item.prompt}</div>
 <div class="expand-hint">👆 点击展开 / 收起全文</div>
 </div>`).join('');
-document.getElementById('category-title').textContent=tab==='image'?'🖼️ 图片生成提示词':'🎬 视频生成提示词';
-document.getElementById('prompt-count').textContent='共 10 条';
+document.getElementById('category-title').textContent=tabEmoji+' '+tabNames[tab]+'提示词';
+document.getElementById('prompt-count').textContent='共 '+BS+' 条';
 }
 
 function refresh(){
 const btn=document.getElementById('refreshBtn');btn.classList.add('spinning');
-if(tab==='image')imgIdx=(imgIdx+BS)%ALL_PROMPTS.image.length;else vidIdx=(vidIdx+BS)%ALL_PROMPTS.video.length;
+idxMap[tab]=(idxMap[tab]+BS)%ALL_PROMPTS[tab].length;
 render();setTimeout(()=>btn.classList.remove('spinning'),400);
 const t=document.getElementById('toast');t.textContent='✅ 已刷新，展示新一批提示词！';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);
 }
 
 document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',function(){
-document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));this.classList.add('active');tab=this.dataset.tab;render();
+document.querySelectorAll('.tab-btn').forEach(x=>{x.classList.remove('active-image','active-video','active-work')});
+this.classList.add('active-'+this.dataset.tab);
+tab=this.dataset.tab;
+render();
 }));
 document.getElementById('refreshBtn').addEventListener('click',refresh);
 render();
