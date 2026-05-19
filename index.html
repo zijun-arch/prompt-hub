@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PromptHub - AI提示词工具库</title>
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0f0f14;--card:#1a1a24;--card-hover:#22223a;--border:#2a2a3e;--primary:#7c5cfc;--primary-light:#9d7cff;--text:#e8e8f0;--text-dim:#8888a0;--accent-green:#34d399;--accent-pink:#f472b6;--accent-amber:#fbbf24;--accent-blue:#60a5fa}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 header{position:sticky;top:0;z-index:100;background:rgba(15,15,20,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 24px}
 .header-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;background:linear-gradient(135deg,var(--primary-light),var(--accent-pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.logo-badge{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:linear-gradient(135deg,var(--primary),var(--accent-pink));border-radius:8px;font-size:16px;-webkit-text-fill-color:white;color:white}
+.logo-badge{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:linear-gradient(135deg,var(--primary),var(--accent-pink));border-radius:8px;font-size:16px;color:#fff;-webkit-text-fill-color:#fff}
 .container{max-width:1200px;margin:0 auto;padding:24px}
 .hero{text-align:center;padding:40px 0 32px}
 .hero h1{font-size:32px;font-weight:800;background:linear-gradient(135deg,#fff,var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
 .hero p{color:var(--text-dim);font-size:15px;max-width:560px;margin:0 auto;line-height:1.6}
 .tabs{display:flex;gap:10px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
-.tab-btn{padding:10px 24px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text-dim);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.tab-btn{padding:10px 24px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text-dim);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;user-select:none}
 .tab-btn:hover{border-color:var(--primary);color:var(--text)}
 .tab-btn.active-image{background:linear-gradient(135deg,var(--primary),#5b3fd4);border-color:transparent;color:#fff;box-shadow:0 4px 20px rgba(124,92,252,0.3)}
 .tab-btn.active-video{background:linear-gradient(135deg,#f59e0b,#d97706);border-color:transparent;color:#fff;box-shadow:0 4px 20px rgba(245,158,11,0.3)}
@@ -25,10 +25,8 @@ header{position:sticky;top:0;z-index:100;background:rgba(15,15,20,0.85);backdrop
 .category-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .category-header h2{font-size:20px;font-weight:700}
 .category-header .count{color:var(--text-dim);font-size:14px}
-.refresh-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:14px;cursor:pointer;transition:all .2s}
+.refresh-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:14px;cursor:pointer;transition:all .2s;user-select:none}
 .refresh-btn:hover{border-color:var(--primary);background:var(--card-hover)}
-.refresh-btn.spinning svg{animation:spin .4s ease}
-@keyframes spin{to{transform:rotate(360deg)}}
 .prompt-grid{display:grid;grid-template-columns:1fr;gap:16px}
 .prompt-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
 .prompt-card:hover{border-color:var(--primary);background:var(--card-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,92,252,0.1)}
@@ -42,10 +40,14 @@ header{position:sticky;top:0;z-index:100;background:rgba(15,15,20,0.85);backdrop
 .tag.work-tag{background:rgba(52,211,153,0.15);color:var(--accent-green)}
 .prompt-text{color:var(--text-dim);font-size:14px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .prompt-card.expanded .prompt-text{-webkit-line-clamp:unset}
-.expand-hint{color:var(--primary-light);font-size:13px;margin-top:8px}
+.expand-hint{color:var(--primary-light);font-size:13px;margin-top:8px;opacity:0.7}
 .source-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:4px;font-size:11px;background:rgba(255,255,255,0.05);color:var(--text-dim)}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--card);border:1px solid var(--border);padding:12px 24px;border-radius:12px;font-size:14px;opacity:0;transition:all .3s;z-index:200}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.loading{text-align:center;padding:60px 20px;color:var(--text-dim)}
+.loading .spinner{display:inline-block;width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin .6s linear infinite;margin-bottom:12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-state{text-align:center;padding:60px 20px;color:var(--accent-pink)}
+.error-state .retry-btn{margin-top:12px;padding:8px 20px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:14px;cursor:pointer}
+.error-state .retry-btn:hover{border-color:var(--primary)}
 footer{text-align:center;padding:40px 24px;color:var(--text-dim);font-size:13px;border-top:1px solid var(--border);margin-top:40px}
 footer a{color:var(--primary-light);text-decoration:none}
 @media(min-width:768px){.prompt-grid{grid-template-columns:1fr 1fr}.hero h1{font-size:40px}}
@@ -69,200 +71,155 @@ footer a{color:var(--primary-light);text-decoration:none}
 <button class="tab-btn" data-tab="work">💼 日常工作</button>
 </div>
 <div class="category-header">
-<div><h2 id="category-title">🖼️ 图片生成提示词</h2><span class="count" id="prompt-count">共 15 条</span></div>
-<button class="refresh-btn" id="refreshBtn">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
-<path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
-</svg>换一批
-</button>
+<div><h2 id="categoryTitle">🖼️ 图片生成提示词</h2><span class="count" id="promptCount">共 0 条</span></div>
+<button class="refresh-btn" id="refreshBtn">🔄 换一批</button>
 </div>
-<div class="prompt-grid" id="promptGrid"></div>
+<div class="prompt-grid" id="promptGrid">
+<div class="loading" id="loadingState">
+<div class="spinner"></div>
+<div>正在加载提示词数据...</div>
+</div>
+</div>
 </main>
-<footer><p>PromptHub · 数据来源自全网精选 · 仅供学习参考</p></footer>
-<div class="toast" id="toast"></div>
+<footer>
+PromptHub · 数据来源自全网精选 · 仅供学习参考<br>
+<a href="https://github.com/zijun-arch/prompt-hub" target="_blank" rel="noopener">GitHub</a>
+</footer>
 
 <script>
-const ALL_PROMPTS = {
-image: [
-{id:1,title:"赛博朋克城市夜景",tags:["科幻","城市","夜景"],
-prompt:"A sprawling cyberpunk cityscape at night, towering neon-lit skyscrapers with holographic billboards, rain-soaked streets reflecting purple and blue lights, flying vehicles between buildings, crowded wet sidewalks with umbrellas, cinematic lighting with strong contrast between dark shadows and bright neon signs, 8K ultra detailed, volumetric fog, ray tracing, Blade Runner aesthetic, wide angle view from above, hyperrealistic, moody atmosphere, deep cyberpunk color palette of magenta, cyan and deep blue.",
-source:"全网精选"},
-{id:2,title:"魔法森林中的精灵",tags:["奇幻","自然","角色"],
-prompt:"A beautiful ethereal elf maiden with long silver hair and pointed ears standing in an enchanted forest, glowing bioluminescent mushrooms and plants surrounding her, floating magical particles of golden light, ancient towering trees with twisted roots, a crystal-clear stream reflecting the moonlight, iridescent butterflies fluttering around, intricate elven armor with gold filigree, soft magical glow emanating from her staff, mystical atmosphere, deep rich greens and golds, volumetric lighting through the canopy, fantasy art style, highly detailed, dramatic lighting, ethereal beauty, cinematic composition.",
-source:"全网精选"},
-{id:3,title:"日式极简庭院静物",tags:["极简","日式","静物"],
-prompt:"A serene Japanese zen garden in morning light, raked white gravel with smooth curves, a single red maple leaf floating on a dark stone water basin (tsukubai), bamboo fence in the background, soft mist hovering low, warm golden sunrise light casting long shadows, moss-covered stones, minimalist composition with strong negative space, wabi-sabi aesthetic, 8K photography, soft focus background, tranquil atmosphere, earth tones with a pop of red, vertical 9:16 composition for social media, cinematic color grading with warm amber highlights and cool teal shadows.",
-source:"全网精选"},
-{id:4,title:"太空站日出",tags:["太空","科幻","风景"],
-prompt:"Interior view of a futuristic space station observation deck at sunrise, huge curved panoramic windows showing Earth from orbit with city lights on the night side and golden sunrise on the horizon, a lone astronaut silhouette with helmet resting on the window frame, floating zero-g coffee droplets, warm golden light flooding the corridor, holographic star charts and data displays on glass panels, sleek minimalist white interior with soft blue accent lighting, extremely detailed, cinematic lighting, inspired by 2001: A Space Odyssey and Interstellar, serene and contemplative, highly realistic textures.",
-source:"全网精选"},
-{id:5,title:"古风玄幻美人",tags:["古风","国风","人物"],
-prompt:"A stunning Chinese fantasy woman dressed in elaborate hanfu with flowing silk robes in shades of cerulean blue and jade green, golden hairpins and pearl ornaments in her black hair, standing in a misty mountain landscape, an ancient pine tree on a cliff edge, clouds rolling through distant mountain peaks, traditional Chinese painting aesthetic meets modern digital art, water-ink wash effect on the background mountains, delicate brushwork on the costume details, holding a jade flute, cherry blossom petals floating in the wind, soft morning light, ethereal beauty, 9:16 portrait composition, traditional Chinese color palette of blue-green mountains and warm skin tones.",
-source:"全网精选"},
-{id:6,title:"美食摄影·精致甜点",tags:["美食","摄影","静物"],
-prompt:"Overhead flat lay of an artisanal dessert spread: a slice of matcha tiramisu on a slate plate with perfect layers visible, fresh berries, edible flowers, a drizzle of honey catching natural window light, wooden table surface, ceramic teapot in the background, small glass of cold brew coffee with ice cubes, warm golden hour lighting from the side creating dramatic shadows, macro photography style, sharp focus on the main dessert with creamy bokeh background, rich earthy greens and warm browns, 9:16 vertical composition for food social media.",
-source:"全网精选"},
-{id:7,title:"深海神秘生物",tags:["海底","奇幻","生物"],
-prompt:"A magnificent deep sea bioluminescent jellyfish-like creature floating in dark abyssal waters, translucent bell with rainbow iridescence, long flowing tentacles trailing behind with glowing blue and purple light nodes, small fish swimming in glowing spiral patterns around it, underwater cavern walls in the distant background with coral formations, light rays barely penetrating from far above, mysterious and majestic atmosphere, ethereal blue-green color palette, hyper-detailed macro view of the creature's translucent body showing internal structures, bioluminescent particles suspended in the water, cinematic lighting, high contrast, 9:16 composition.",
-source:"全网精选"},
-{id:8,title:"未来主义建筑室内",tags:["建筑","室内","未来"],
-prompt:"Minimalist futuristic living room with floor-to-ceiling windows overlooking a futuristic city skyline at dusk, curved white organic walls with embedded RGB LED strips, a floating fireplace with clean flame, minimalist low furniture in warm beige tones, a single bonsai tree on a pedestal, natural materials like walnut wood and linen contrasting with sleek high-tech environment, warm ambient lighting creating a cozy atmosphere despite the modern setting, bio-mimetic architecture with sweeping organic curves, ultra-wide angle interior shot, architectural digest style photorealism, warm neutral color palette, soft shadows and reflections on polished concrete floors, 9:16 vertical.",
-source:"全网精选"},
-{id:9,title:"北欧极光之夜",tags:["极光","自然","风景"],
-prompt:"A breathtaking night scene of the Northern Lights over a remote Scandinavian fjord, vibrant green and purple aurora bands dancing across the star-filled sky reflecting on the calm dark water below, a small traditional red wooden cabin with warm golden light from the windows, snow-covered pine trees silhouetted against the aurora, a wooden pier extending into the water, complete stillness and tranquility, long exposure photography, milky way visible through the aurora, deep dark blue night sky, ultra high resolution, magical atmosphere, cold blue and green color palette with warm yellow cabin light, wide view, vertical 9:16.",
-source:"全网精选"},
-{id:10,title:"蒸汽朋克发明家工作室",tags:["蒸汽朋克","工业","复古"],
-prompt:"A cluttered inventor's workshop in Victorian-era steampunk style, copper pipes and brass gears covering the ceiling, a large mechanical device in the center with glowing blue energy core, stained glass window casting colored light, wooden workbench with blueprints and scattered tools, steam rising from various machines, vintage lamps with warm yellow glow, a mechanical arm in progress on the table, bookshelves filled with leather-bound books, brass telescopes and navigational instruments, clockwork mechanisms visible everywhere, warm amber tones mixed with cool blue from the energy core, cinematic lighting with steam scattering the light, deep shadows, highly detailed textures, 9:16 vertical.",
-source:"全网精选"},
-{id:11,title:"都市丛林·玻璃花房",tags:["植物","城市","生活"],
-prompt:"A stunning glass conservatory cafe nestled between modern skyscrapers in a busy city, tropical plants cascading from the ceiling, monstera and ferns creating a green canopy, wrought iron tables with marble tops, morning sunlight streaming through the glass roof creating dramatic light rays through the humidity, a woman in a cream linen dress reading a book, steam rising from a ceramic coffee cup, urban jungle aesthetic, warm golden and deep green color palette, cinematic depth of field, blurred city background through the glass, peaceful sanctuary concept, 9:16 vertical lifestyle photography style.",
-source:"全网精选"},
-{id:12,title:"水墨抽象意境",tags:["抽象","艺术","国风"],
-prompt:"Abstract ink wash painting, sweeping strokes of sumi-e black ink bleeding into wet rice paper, a single red plum branch emerging from the darkness, golden flecks scattered like falling leaves, negative space forming an implied mountain landscape, powerful calligraphy strokes intersecting with organic ink splashes, minimalist composition with maximum expression, Japanese sumi-e meets contemporary abstract art, dramatic contrast between deep black ink and pure white space, subtle grey washes creating depth, textured paper grain visible, vertical 9:16 scroll-like composition, meditative and contemplative, sophisticated Asian art aesthetic.",
-source:"全网精选"},
-{id:13,title:"赛博格与自然",tags:["科幻","人物","概念"],
-prompt:"A beautiful cyborg woman half submerged in a crystal clear mountain lake, her mechanical arm with intricate gold circuits and glowing blue joints reaching toward the surface, human skin seamlessly transitioning into white cybernetic panels with geometric patterns, pine forest reflected in the water surface, bioluminescent particles rising from where her mechanical parts touch the water, surreal contrast between organic nature and futuristic technology, ethereal morning mist, soft golden sunlight, philosophical tone about human-machine fusion, cyberpunk meets nature, ultra detailed skin and metal textures, 9:16 vertical composition, high contrast, emotional and thought-provoking.",
-source:"全网精选"},
-{id:14,title:"梦幻粉色系卧室",tags:["室内","少女","梦幻"],
-prompt:"A dreamy pastel pink bohemian bedroom with a canopy bed draped in sheer white fabric, fairy lights twinkling across the ceiling like stars, large floor cushions and sheepskin rugs, dried flowers hanging upside down from a macrame wall hanging, a vintage vanity mirror with warm bulbs, morning light filtering through sheer white curtains creating soft lens flare, a sleeping cat curled up on a knitted blanket, warm pink and lavender color palette, soft focus and dreamy atmosphere, hygge aesthetic, 9:16 vertical composition, cozy and inviting, soft pastel tones with gentle contrast.",
-source:"全网精选"},
-{id:15,title:"沙漠废墟中的发现",tags:["遗迹","探险","奇幻"],
-prompt:"An ancient stone temple half-buried in golden desert sands, massive crumbling columns with intricate hieroglyphic carvings, a mysterious glowing crystal embedded in an altar at the center, rays of sunlight bursting through a hole in the ruined ceiling creating a dramatic light beam, swirling dust particles in the air, colorful desert sunset visible through broken archways, a sense of discovery and ancient mystery, warm golden and terracotta color palette with electric blue glow from the crystal, cinematic composition, ultra detailed stone textures and sand particles, 9:16 vertical frame.",
-source:"全网精选"}
-],
-video: [
-{id:101,title:"咖啡店清晨时光",tags:["日常","温暖","生活"],
-prompt:"A cozy coffee shop on a quiet street corner during early morning, slow camera pan from outside the foggy window into the warm interior, barista carefully pouring latte art on a matcha latte, steam rising gracefully, morning sunlight streaming through the window creating golden light rays, a customer reading a newspaper at the corner table, the bell on the door jingles lightly, subtle camera movement following the barista's hands, warm golden and cream color grading, soft ambient coffee shop sounds implied, 9:16 vertical aspect ratio for TikTok/Reels, smooth cinematic transition from exterior to interior, warm glowy filmic look with subtle grain.",
-source:"全网精选"},
-{id:102,title:"未来城市飞行汽车",tags:["科幻","城市","未来"],
-prompt:"Soaring establishing shot of a futuristic megalopolis at golden hour, thousands of flying vehicles flowing between towering mega-skyscrapers like a digital river, holographic advertisements projecting from building surfaces, drone camera weaving between traffic lanes, smooth motion blur, neon lights beginning to activate as the sun sets, glass buildings reflecting the golden orange sky, fast-paced kinetic cut to a flying taxi interior view, deep depth of field, cyberpunk color palette of orange sunset transitioning to purple-blue night, vertical 9:16 format, dynamic camera movement with speed ramps, sci-fi cinematic feel.",
-source:"全网精选"},
-{id:103,title:"樱花雨下的告白",tags:["浪漫","校园","情感"],
-prompt:"A romantic scene in a Japanese park during cherry blossom season, slow motion shot of pink petals falling like snow, a young couple standing under a blooming sakura tree, the boy nervously handing a letter to the girl, her surprised and happy expression, golden afternoon light filtering through the petals creating beautiful lens flares, gentle camera orbit around the couple, shallow depth of field with blurred pink background, soft pastel pink and warm gold color grading, dreamy and emotional atmosphere, 9:16 aspect ratio suitable for short videos, smooth slow motion at 60fps, cinematic film look with warm tones.",
-source:"全网精选"},
-{id:104,title:"雪山滑雪",tags:["运动","户外","刺激"],
-prompt:"First-person GoPro perspective of an expert skier carving down a steep powder-filled mountain slope, fresh snow spraying up with each turn, breathtaking panoramic view of snow-capped alpine peaks under bright blue sky, camera tracking the skier's movements with smooth stabilization, fast-paced dynamic editing, sunlight sparkling on fresh snow, wide angle lens emphasizing speed and depth, shots alternate between POV and a follow-cam drone shot, crisp cold atmosphere, blue and white color palette with warm sunlight accents, vertical 9:16 format for social media, adrenaline-pumping energy, crisp contrast and high clarity.",
-source:"全网精选"},
-{id:105,title:"治愈系烘焙Vlog",tags:["美食","治愈","教程"],
-prompt:"Step by step baking process of chocolate croissants in a sunlit home kitchen, close up shots of hands kneading golden dough, butter being layered and folded, close up of the pastry rising in the oven through the glass door, slow motion shot of chocolate melting and being drizzled over the finished croissants, warm golden hour lighting throughout, gentle camera pans across ingredients neatly arranged on the counter, overhead shots of the workspace, final plated shot with a cup of coffee, ASMR-style close ups of cutting and pouring sounds, warm earthy tones, clean aesthetic kitchen, 9:16 vertical, cozy and satisfying.",
-source:"全网精选"},
-{id:106,title:"雨中城市倒影",tags:["城市","氛围","摄影"],
-prompt:"Artistic montage of a rainy night in a vibrant Asian metropolis, neon signs reflecting off wet pavements creating mirror-like surfaces, slow motion of raindrops hitting umbrellas, people walking with colorful umbrellas creating a moving canvas, close up of street food vendors with steam rising, a taxi splashing through a puddle in slow motion, time-lapse of clouds moving over city skyline between rain showers, cinematic transitions between shots, deep blues and warm orange neon contrast, film grain texture, poetic and moody atmosphere, 9:16 vertical, Wong Kar-wai inspired cinematography, rich color grading with teal and orange.",
-source:"全网精选"},
-{id:107,title:"猎豹奔跑·野生动物",tags:["动物","自然","速度"],
-prompt:"National Geographic style wildlife footage of a cheetah sprinting across the African savanna at full speed in golden hour light, incredibly detailed slow motion showing every muscle movement and the wind rippling through its fur, dust particles kicked up from the dry ground, the cheetah's intense focused expression, golden grass plains stretching to the horizon, acacia trees silhouetted against the warm sunset sky, camera tracks alongside the cheetah at matching speed, shallow depth of field with beautiful bokeh in the background, warm golden and amber tones, 9:16 aspect ratio, premium wildlife documentary quality, 120fps ultra slow motion feel.",
-source:"全网精选"},
-{id:108,title:"涂鸦艺术创作",tags:["艺术","创意","城市"],
-prompt:"Time-lapse of a street artist creating a massive photorealistic mural on a brick wall, cans of spray paint in vibrant colors, the artwork coming to life as a colorful phoenix rising from geometric patterns, street view with occasional pedestrians passing, the artist's hand movements captured with smooth motion, natural daylight shifting to evening as the piece nears completion, final reveal shot pulling back to show the full magnificent mural, street lamps turning on creating warm ambient light, urban gritty background, 9:16 vertical format, dynamic editing with speed variations between painting steps.",
-source:"全网精选"},
-{id:109,title:"水下芭蕾",tags:["舞蹈","水下","梦幻"],
-prompt:"Ethereal underwater ballet performance, a dancer in flowing white fabric performing elegant movements in crystal clear turquoise water, sunlight filtering from the surface creating beautiful light caustics on the dancer's skin and costume, bubbles swirling around with each movement, fabric flowing like liquid in the water, floating particles catching the light, shot transitions between underwater slow motion and a dreamy fade to the dancer resting on a pool edge in golden light, ethereal and weightless feeling, cool blue-teal color palette with warm skin tones, 9:16 vertical, smooth and fluid editing matching the dance movements.",
-source:"全网精选"},
-{id:110,title:"街舞对决",tags:["舞蹈","城市","活力"],
-prompt:"Energetic breaking dance battle on a vibrant city street at sunset, two dancers taking turns showing their best moves in front of a circle of cheering onlookers, dynamic camera movement circling the dancers, slow motion capture of power moves and freezes, colorful graffiti wall as backdrop, portable speakers and an energetic crowd, dramatic sunset warm backlight, sweat droplets catching the light, the energy and passion of street dance culture, fast cuts matching the beat, occasional overhead drone shots capturing the crowd circle, 9:16 vertical format, warm color palette, cinematic street culture documentary style.",
-source:"全网精选"},
-{id:111,title:"魔幻森林旅行",tags:["奇幻","旅行","探索"],
-prompt:"First-person adventurous journey through an enchanted forest trail, moss-covered stone steps leading deeper into the woods, sunlight piercing through dense canopy creating dramatic volumetric light rays, colorful exotic mushrooms glowing faintly on the forest floor, a small wooden bridge over a crystal clear stream, camera moving smoothly along the trail, occasional pause to take in panoramic views, butterflies and fireflies appearing as the light dims, transition from day to magical twilight, bioluminescent plants beginning to glow, mysterious and wonder-filled atmosphere, deep greens and magical blue-purple tones, 9:16 vertical format, cinematic exploration vlog style.",
-source:"全网精选"},
-{id:112,title:"手工陶艺制作",tags:["手工","艺术","宁静"],
-prompt:"Close up shots of a potter's hands shaping wet clay on a spinning wheel, the clay transforming from a lump into an elegant vase, water and clay splashing gently, the potter's focused expression, close ups of textured hands and the smooth spinning clay, wooden pottery tools shaping the edges, natural north-facing window light casting soft shadows on the workspace, shelves in the background filled with finished ceramic pieces, slow and meditative pace, warm earth tones and natural materials, 9:16 vertical format, ASMR quality close ups of the clay sounds, minimalist aesthetic, zen-like calm atmosphere.",
-source:"全网精选"},
-{id:113,title:"极简穿搭开箱",tags:["时尚","开箱","极简"],
-prompt:"Clean and minimal fashion lookbook video on a white studio background, model walking forward in a series of sophisticated monochrome outfits, smooth transitions between looks, each outfit displayed with a slow 360 degree spin showing details, soft box lighting creating even illumination with no shadows, subtle background music, occasional close up shots of fabric texture and accessories, neutral beige, cream, black and white color palette, Japanese minimalism meets high fashion, 9:16 vertical format for Instagram Reels, steady smooth gimbal work, premium fashion editorial aesthetic.",
-source:"全网精选"},
-{id:114,title:"星空露营延时",tags:["露营","星空","自然"],
-prompt:"Mesmerizing night time-lapse at a remote mountain campsite, a small tent with warm orange light glowing from inside, the milky way rotating majestically overhead, shooting stars occasionally streaking across the frame, pine trees silhouetted against the starry sky, transition from twilight with purple-orange sky to deep night with brilliant stars, camera slowly pushing in towards the tent, fire embers rising from a campfire in the foreground, peaceful and awe-inspiring, deep blue and black with warm fire light, 9:16 vertical format, premium astro-photography quality, the vastness of space contrasted with the small warm tent.",
-source:"全网精选"},
-{id:115,title:"书店里的猫",tags:["治愈","动物","日常"],
-prompt:"Cozy video tour of a charming independent bookstore with a resident orange cat, the cat walking gracefully between bookshelves, rubbing against vintage leather-bound books, jumping onto a window sill bathed in warm afternoon sunlight, close ups of the cat's whiskers in the golden light, shelves stuffed with books creating a warm cluttered background, a customer gently petting the cat, shots of the cat curled up sleeping on a stack of books, warm amber and cream color palette, 9:16 vertical format, gentle camera movements as if observing quietly, cozy library atmosphere, pure comfort content.",
-source:"全网精选"}
-],
-work: [
-{id:201,title:"邮件撰写（正式汇报）",tags:["邮件","沟通","正式"],
-prompt:"你是一位专业的商务邮件撰写助手。请帮我写一封给[客户/领导]的邮件，主题是[XXX]。核心要点：1... 2... 3...。语气要求[正式/温和/紧迫]。请控制在一屏以内，段落清晰，结尾有明确的行动建议或下一步安排。如果有附件，请在正文中提及。",
-source:"实战精选"},
-{id:202,title:"会议纪要整理",tags:["会议","整理","效率"],
-prompt:"你是一位会议记录专员。以下是一段会议录音转文字：[[粘贴内容]]。请按这个格式整理输出：\n① 会议主题 / 时间 / 参与人\n② 讨论事项（逐条列出，每项标注决策结果）\n③ 遗留问题\n④ 待办事项（负责人 + 截止时间）\n多用短句和要点，不要长段落。",
-source:"实战精选"},
-{id:203,title:"周报/日报生成",tags:["汇报","周报","效率"],
-prompt:"根据我本周完成的工作：[[粘贴工作内容]]。请帮我写一份周报。要求：① 按"本周重点→常规工作→存在问题→下周计划"的结构 ② 重点事项用数据量化（如完成XX单、处理XX条）③ 问题部分只说事实，不写主观感受 ④ 全文控制在300字以内，领导能30秒看完。",
-source:"实战精选"},
-{id:204,title:"数据分析简报",tags:["数据","分析","汇报"],
-prompt:"我有一组[某业务]数据：[[粘贴数据表格]]。请帮我：① 找出3个最明显的数据趋势或变化 ② 标记异常值或拐点 ③ 推测背后可能的业务原因 ④ 给1条可落地的行动建议。不要写分析废话和通用套话，结论优先。输出格式使用加粗标题+短句要点。",
-source:"实战精选"},
-{id:205,title:"方案审阅/挑刺",tags:["方案","审阅","批判"],
-prompt:"请以挑剔的评审领导视角审阅以下方案：[[粘贴方案]]。只输出问题，不要夸奖。检查维度：① 逻辑是否有漏洞 ② 数据支撑是否充足 ③ 风险点是否有遗漏 ④ 执行可行性是否存疑。每条问题后面附带一条改进建议。语气直接、准确，不带情绪。",
-source:"实战精选"},
-{id:206,title:"跨部门沟通消息",tags:["沟通","协作","跨部门"],
-prompt:"我需要向[XX部门]申请[资源/配合/信息]，对方可能不太配合。请帮我拟一段沟通消息。要求：① 先说对方能获得的好处或价值 ② 再提我的具体需求 ③ 尽量降低对方的执行成本（提供模板、整理好数据）④ 语气客气但不卑微，平等协作。控制在150字以内。",
-source:"实战精选"},
-{id:207,title:"任务拆解与排期",tags:["任务","排期","管理"],
-prompt:"我接到一个任务：[[描述任务]]，截止日期是[日期]。请帮我：① 拆解成5-8个子任务 ② 标出每个子任务之间的依赖关系 ③ 标出可能翻车的风险点 ④ 按截止时间倒排，给出每天具体要做什么 ⑤ 至少预留1天buffer。输出为表格或清单格式。",
-source:"实战精选"},
-{id:208,title:"PPT大纲/汇报框架",tags:["PPT","汇报","框架"],
-prompt:"我需要做一个关于[主题]的汇报，受众是[领导/客户/团队]，时长15分钟。请帮我生成PPT大纲。结构如下：\n封面（标题+一句话摘要）→ 目录（3-4个板块）→ 核心论点（每页一个论点，配1-2个数据支撑）→ 问题/挑战 → 行动建议 → Q&A。每页配一句Key Message（20字以内）。",
-source:"实战精选"},
-{id:209,title:"写作润色/精炼",tags:["写作","润色","精炼"],
-prompt:"请帮我润色以下文案：[[粘贴原文]]。要求：① 让逻辑更通顺，段落衔接自然 ② 删掉所有废话、赘余表述、重复用词 ③ 保持专业但不生硬，像活人写的 ④ 保留原文的核心信息，不改原意。润色后附上一个简短的修改说明，列出改了哪些地方。",
-source:"实战精选"},
-{id:210,title:"面试提问清单",tags:["面试","招聘","管理"],
-prompt:"针对[岗位名称]的面试，我需要考察候选人的[核心技能方向]。请用STAR法则帮我设计10个行为面试题，每个问题标注想考察的能力维度（如：解决问题能力、抗压能力、团队协作、专业深度）。再加3个可以快速筛选基础能力的封闭式问题。按"开场→核心技术→软技能→收尾"的顺序排列。",
-source:"实战精选"},
-{id:211,title:"竞品分析框架",tags:["分析","竞品","模板"],
-prompt:"我需要对[产品/服务]做一份竞品分析。请帮我设计一个对比表格框架，包含以下维度：产品功能、定价策略、目标客群、营销渠道、用户口碑。每个维度写清楚：① 对比什么具体内容 ② 用什么标准打分（1-5分）③ 数据来源建议。最后附一个可以直接粘贴到Excel里的空白模板。",
-source:"实战精选"},
-{id:212,title:"工作总结/复盘",tags:["复盘","总结","改进"],
-prompt:"基于以下信息做一份项目复盘：目标[XXX]、实际结果[XXX]、遇到问题[XXX]。输出结构如下：\n一、目标与结果对比（用数据说话）\n二、根因分析（区分内因/外因，每原因附带证据）\n三、做得好的（值得固化）\n四、做得不好的（改进方向）\n五、后续行动计划（具体到谁做什么）\n每部分不超过4行，用短句。附一个3个月后的追查时间点。
-",source:"实战精选"},
-{id:213,title:"AI写会议通知",tags:["会议","通知","行政"],
-prompt:"请帮我写一封会议通知。主题：[XXX会议]。时间：[日期时间]。地点/线上链接：[XXX]。参会人：[XXX]。议程：①... ②... ③...。要求：① 开头说明为什么开这个会（背景和目的）② 议程写清楚每个环节的时间分配 ③ 结尾写清楚需要参会人提前准备什么 ④ 语言简洁，一看就懂。",
-source:"实战精选"},
-{id:214,title:"日报/站会发言模板",tags:["日报","站会","敏捷"],
-prompt:"请根据我今天的工作内容：[[粘贴内容]]，帮我写一段60秒站立会的发言稿。结构：① 昨天做了什么（1句话+结果）② 今天要做什么（1-2件事）③ 需要什么支持/卡点（如果有）。控制在150字以内，口语化，适合快速轮着说。",
-source:"实战精选"},
-{id:215,title:"领导汇报口头稿",tags:["汇报","沟通","口头"],
-prompt:"我需要向[领导]口头汇报[主题]，大概5分钟。请帮我写一份口语化的汇报稿。要求：① 开头30秒先说结论/核心请求（领导没耐心听铺垫）② 中间2分钟讲3个支撑点，每个配1个具体例子或数据 ③ 最后30秒明确提出下一步需要什么支持 ④ 不要书面语，像正常说话一样自然。",
-source:"实战精选"}
-]
-};
+(function() {
+  'use strict';
 
-let tab='image', idxMap={image:0, video:0, work:0};
-const BS=10;
-function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
-function batch(data,start,n){const r=[];for(let i=0;i<n;i++)r.push(data[(start+i)%data.length]);return r}
+  // ---------- 状态 ----------
+  var currentTab = 'image';
+  var startIndex = { image: 0, video: 0, work: 0 };
+  var PAGE_SIZE = 10;
+  var allData = null; // 加载后填充
 
-function render(){
-const data=ALL_PROMPTS[tab], start=idxMap[tab], items=batch(data,start,BS), grid=document.getElementById('promptGrid');
-const tagClass=tab==='image'?'image-tag':tab==='video'?'video-tag':'work-tag';
-const tabEmoji=tab==='image'?'🖼️':tab==='video'?'🎬':'💼';
-const tabNames={image:'图片生成',video:'视频生成',work:'日常工作'};
-grid.innerHTML=items.map((item,i)=>`
-<div class="prompt-card" onclick="this.classList.toggle('expanded')">
-<div class="prompt-card-header"><h3>${item.title}</h3><span class="card-index">#${String(start+i+1).padStart(2,'0')}</span></div>
-<div class="tags">${item.tags.map(t=>\`<span class="tag \${tagClass}">\${t}</span>\`).join('')}<span class="source-badge">📡 ${item.source}</span></div>
-<div class="prompt-text">${item.prompt}</div>
-<div class="expand-hint">👆 点击展开 / 收起全文</div>
-</div>`).join('');
-document.getElementById('category-title').textContent=tabEmoji+' '+tabNames[tab]+'提示词';
-document.getElementById('prompt-count').textContent='共 '+BS+' 条';
-}
+  // ---------- DOM 引用 ----------
+  var grid = document.getElementById('promptGrid');
+  var categoryTitle = document.getElementById('categoryTitle');
+  var promptCount = document.getElementById('promptCount');
+  var loadingState = document.getElementById('loadingState');
 
-function refresh(){
-const btn=document.getElementById('refreshBtn');btn.classList.add('spinning');
-idxMap[tab]=(idxMap[tab]+BS)%ALL_PROMPTS[tab].length;
-render();setTimeout(()=>btn.classList.remove('spinning'),400);
-const t=document.getElementById('toast');t.textContent='✅ 已刷新，展示新一批提示词！';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);
-}
+  // ---------- 工具函数 ----------
+  function getBatch() {
+    if (!allData) return [];
+    var data = allData[currentTab];
+    var start = startIndex[currentTab];
+    var batch = [];
+    for (var i = 0; i < PAGE_SIZE; i++) {
+      batch.push(data[(start + i) % data.length]);
+    }
+    return batch;
+  }
 
-document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',function(){
-document.querySelectorAll('.tab-btn').forEach(x=>{x.classList.remove('active-image','active-video','active-work')});
-this.classList.add('active-'+this.dataset.tab);
-tab=this.dataset.tab;
-render();
-}));
-document.getElementById('refreshBtn').addEventListener('click',refresh);
-render();
+  // ---------- 渲染 ----------
+  function render() {
+    if (!allData) return;
+
+    var batch = getBatch();
+    var tagClassMap = { image: 'image-tag', video: 'video-tag', work: 'work-tag' };
+    var emojiMap = { image: '\u{1F5BC}\uFE0F', video: '\u{1F3AC}', work: '\u{1F4BC}' };
+    var nameMap = { image: '\u56FE\u7247\u751F\u6210', video: '\u89C6\u9891\u751F\u6210', work: '\u65E5\u5E38\u5DE5\u4F5C' };
+    var tagClass = tagClassMap[currentTab];
+
+    var html = '';
+    for (var i = 0; i < batch.length; i++) {
+      var item = batch[i];
+      var realIndex = startIndex[currentTab] + i + 1;
+      var padded = ('0' + realIndex).slice(-2);
+
+      var tagsHtml = '';
+      for (var t = 0; t < item.tags.length; t++) {
+        tagsHtml += '<span class="tag ' + tagClass + '">' + item.tags[t] + '</span>';
+      }
+
+      html += '<div class="prompt-card" onclick="this.classList.toggle(\'expanded\')">' +
+        '<div class="prompt-card-header">' +
+          '<h3>' + item.title + '</h3>' +
+          '<span class="card-index">#' + padded + '</span>' +
+        '</div>' +
+        '<div class="tags">' +
+          tagsHtml +
+          '<span class="source-badge">📡 ' + item.source + '</span>' +
+        '</div>' +
+        '<div class="prompt-text">' + item.prompt + '</div>' +
+        '<div class="expand-hint">👆 点击展开 / 收起全文</div>' +
+      '</div>';
+    }
+
+    grid.innerHTML = html;
+    categoryTitle.textContent = emojiMap[currentTab] + ' ' + nameMap[currentTab] + '提示词';
+    promptCount.textContent = '共 ' + PAGE_SIZE + ' 条';
+  }
+
+  // ---------- 加载数据 ----------
+  function loadData() {
+    // 显示加载中
+    grid.innerHTML = '<div class="loading"><div class="spinner"></div><div>正在加载提示词数据...</div></div>';
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'data.json', true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          try {
+            allData = JSON.parse(xhr.responseText);
+            render();
+          } catch (e) {
+            grid.innerHTML = '<div class="error-state">❌ 数据解析失败: ' + e.message + '<br><button class="retry-btn" onclick="location.reload()">重新加载</button></div>';
+          }
+        } else {
+          grid.innerHTML = '<div class="error-state">❌ 数据加载失败 (HTTP ' + xhr.status + ')<br><button class="retry-btn" onclick="location.reload()">重新加载</button></div>';
+        }
+      }
+    };
+    xhr.onerror = function() {
+      grid.innerHTML = '<div class="error-state">❌ 网络错误，无法加载数据<br><button class="retry-btn" onclick="location.reload()">重新加载</button></div>';
+    };
+    xhr.send();
+  }
+
+  // ---------- 切换分类 ----------
+  function switchTab(tab) {
+    currentTab = tab;
+    var buttons = document.querySelectorAll('.tab-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      var btn = buttons[i];
+      btn.className = 'tab-btn';
+      if (btn.dataset.tab === tab) {
+        btn.classList.add('active-' + tab);
+      }
+    }
+    render();
+  }
+
+  // ---------- 刷新 ----------
+  function refresh() {
+    if (!allData) return;
+    var data = allData[currentTab];
+    startIndex[currentTab] = (startIndex[currentTab] + PAGE_SIZE) % data.length;
+    render();
+  }
+
+  // ---------- 初始化 ----------
+  document.addEventListener('DOMContentLoaded', function() {
+    // 绑定标签切换
+    var buttons = document.querySelectorAll('.tab-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', function() {
+        switchTab(this.dataset.tab);
+      });
+    }
+
+    // 绑定刷新按钮
+    document.getElementById('refreshBtn').addEventListener('click', refresh);
+
+    // 加载数据
+    loadData();
+  });
+})();
 </script>
 </body>
 </html>

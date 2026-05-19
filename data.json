@@ -1,0 +1,415 @@
+{
+  "image": [
+    {
+      "id": 1,
+      "title": "赛博朋克城市夜景",
+      "tags": [
+        "科幻",
+        "城市",
+        "夜景"
+      ],
+      "prompt": "A sprawling cyberpunk cityscape at night, towering neon-lit skyscrapers with holographic billboards, rain-soaked streets reflecting purple and blue lights, flying vehicles between buildings, crowded wet sidewalks with umbrellas, cinematic lighting with strong contrast between dark shadows and bright neon signs, 8K ultra detailed, volumetric fog, ray tracing, Blade Runner aesthetic, wide angle view from above, hyperrealistic, moody atmosphere, deep cyberpunk color palette of magenta, cyan and deep blue.",
+      "source": "全网精选"
+    },
+    {
+      "id": 2,
+      "title": "魔法森林中的精灵",
+      "tags": [
+        "奇幻",
+        "自然",
+        "角色"
+      ],
+      "prompt": "A beautiful ethereal elf maiden with long silver hair and pointed ears standing in an enchanted forest, glowing bioluminescent mushrooms and plants surrounding her, floating magical particles of golden light, ancient towering trees with twisted roots, a crystal-clear stream reflecting the moonlight, iridescent butterflies fluttering around, intricate elven armor with gold filigree, soft magical glow emanating from her staff, mystical atmosphere, deep rich greens and golds, volumetric lighting through the canopy, fantasy art style, highly detailed, dramatic lighting, ethereal beauty, cinematic composition.",
+      "source": "全网精选"
+    },
+    {
+      "id": 3,
+      "title": "日式极简庭院静物",
+      "tags": [
+        "极简",
+        "日式",
+        "静物"
+      ],
+      "prompt": "A serene Japanese zen garden in morning light, raked white gravel with smooth curves, a single red maple leaf floating on a dark stone water basin (tsukubai), bamboo fence in the background, soft mist hovering low, warm golden sunrise light casting long shadows, moss-covered stones, minimalist composition with strong negative space, wabi-sabi aesthetic, 8K photography, soft focus background, tranquil atmosphere, earth tones with a pop of red, vertical 9:16 composition for social media, cinematic color grading with warm amber highlights and cool teal shadows.",
+      "source": "全网精选"
+    },
+    {
+      "id": 4,
+      "title": "太空站日出",
+      "tags": [
+        "太空",
+        "科幻",
+        "风景"
+      ],
+      "prompt": "Interior view of a futuristic space station observation deck at sunrise, huge curved panoramic windows showing Earth from orbit with city lights on the night side and golden sunrise on the horizon, a lone astronaut silhouette with helmet resting on the window frame, floating zero-g coffee droplets, warm golden light flooding the corridor, holographic star charts and data displays on glass panels, sleek minimalist white interior with soft blue accent lighting, extremely detailed, cinematic lighting, inspired by 2001: A Space Odyssey and Interstellar, serene and contemplative, highly realistic textures.",
+      "source": "全网精选"
+    },
+    {
+      "id": 5,
+      "title": "古风玄幻美人",
+      "tags": [
+        "古风",
+        "国风",
+        "人物"
+      ],
+      "prompt": "A stunning Chinese fantasy woman dressed in elaborate hanfu with flowing silk robes in shades of cerulean blue and jade green, golden hairpins and pearl ornaments in her black hair, standing in a misty mountain landscape, an ancient pine tree on a cliff edge, clouds rolling through distant mountain peaks, traditional Chinese painting aesthetic meets modern digital art, water-ink wash effect on the background mountains, delicate brushwork on the costume details, holding a jade flute, cherry blossom petals floating in the wind, soft morning light, ethereal beauty, 9:16 portrait composition, traditional Chinese color palette of blue-green mountains and warm skin tones.",
+      "source": "全网精选"
+    },
+    {
+      "id": 6,
+      "title": "美食摄影·精致甜点",
+      "tags": [
+        "美食",
+        "摄影",
+        "静物"
+      ],
+      "prompt": "Overhead flat lay of an artisanal dessert spread: a slice of matcha tiramisu on a slate plate with perfect layers visible, fresh berries, edible flowers, a drizzle of honey catching natural window light, wooden table surface, ceramic teapot in the background, small glass of cold brew coffee with ice cubes, warm golden hour lighting from the side creating dramatic shadows, macro photography style, sharp focus on the main dessert with creamy bokeh background, rich earthy greens and warm browns, 9:16 vertical composition for food social media.",
+      "source": "全网精选"
+    },
+    {
+      "id": 7,
+      "title": "深海神秘生物",
+      "tags": [
+        "海底",
+        "奇幻",
+        "生物"
+      ],
+      "prompt": "A magnificent deep sea bioluminescent jellyfish-like creature floating in dark abyssal waters, translucent bell with rainbow iridescence, long flowing tentacles trailing behind with glowing blue and purple light nodes, small fish swimming in glowing spiral patterns around it, underwater cavern walls in the distant background with coral formations, light rays barely penetrating from far above, mysterious and majestic atmosphere, ethereal blue-green color palette, hyper-detailed macro view of the creature's translucent body showing internal structures, bioluminescent particles suspended in the water, cinematic lighting, high contrast, 9:16 composition.",
+      "source": "全网精选"
+    },
+    {
+      "id": 8,
+      "title": "北欧极光木屋",
+      "tags": [
+        "风景",
+        "极光",
+        "冬季"
+      ],
+      "prompt": "A cozy wooden cabin in the middle of a snowy Scandinavian forest, the night sky exploding with vibrant green and purple aurora borealis, smoke rising from the chimney, warm golden light glowing from the cabin windows, snow-covered pine trees, a frozen lake in the foreground reflecting the aurora, a sled leaning against the cabin wall, a dog sleeping on the porch, incredibly detailed textures of snow and wood grain, cold blue winter atmosphere contrasting with warm cabin light, 9:16 vertical format, ultra realistic photography style, magical winter atmosphere.",
+      "source": "全网精选"
+    },
+    {
+      "id": 9,
+      "title": "水彩花卉艺术",
+      "tags": [
+        "水彩",
+        "花卉",
+        "艺术"
+      ],
+      "prompt": "A beautiful watercolor painting of a blooming peony, soft pink and coral petals blending into each other with visible brush strokes, water droplets on the petals catching light, splatter effects around the edges adding artistic energy, negative space in cream white, loose watercolor style with some areas of high detail in the center and softer edges, paper texture visible, natural light coming from above, delicate and feminine, botanical illustration meets modern watercolor art, 9:16 vertical composition, soft romantic color palette of pinks, corals and sage greens.",
+      "source": "全网精选"
+    },
+    {
+      "id": 10,
+      "title": "奶茶时光",
+      "tags": [
+        "美食",
+        "日常",
+        "治愈"
+      ],
+      "prompt": "A cozy overhead flatlay composition featuring a brown sugar pearl milk tea in a clear cup with visible layers, thick cream cheese foam on top, caramel drizzle on the cup walls, beside it a small plate of mochi desserts, cherry blossoms scattered on a warm wooden table surface, soft afternoon light streaming through a window, delicate shadows from a bamboo blind, warm amber and cream color palette, cozy aesthetic asmr vibe, sharp focus on the drink with creamy bokeh on the edges, 9:16 vertical social media composition.",
+      "source": "全网精选"
+    },
+    {
+      "id": 11,
+      "title": "末日废土机车",
+      "tags": [
+        "末日",
+        "机车",
+        "科幻"
+      ],
+      "prompt": "A post-apocalyptic wasteland scene with a heavily customized motorcycle parked on a cracked highway, rusted and weathered details on the bike, a distant storm approaching with dramatic clouds, orange and dusty atmosphere, abandoned cars and debris scattered around, the biker crouching beside the bike checking the engine, worn leather jacket and goggles, Mad Max aesthetic, strong backlighting from the setting sun creating silhouettes, dust particles floating in the air, gritty texture, wide cinematic aspect ratio, warm desaturated color palette with pops of orange.",
+      "source": "全网精选"
+    },
+    {
+      "id": 12,
+      "title": "玻璃花房咖啡馆",
+      "tags": [
+        "咖啡",
+        "室内",
+        "治愈"
+      ],
+      "prompt": "Interior of a beautiful glass conservatory cafe, hanging vines and ferns from the ceiling, mismatched vintage furniture, a white iron table with a latte art coffee on it, sunlight streaming through the glass roof creating beautiful light patterns on the floor, terracotta pots with monstera plants, warm yellow string lights, books stacked on a side table, a cat sleeping on a velvet chair, cozy afternoon vibe, golden hour lighting, botanical cafe atmosphere, 9:16 vertical composition, warm earth tones and lush greens.",
+      "source": "全网精选"
+    },
+    {
+      "id": 13,
+      "title": "琉璃光影·抽象艺术",
+      "tags": [
+        "抽象",
+        "光线",
+        "艺术"
+      ],
+      "prompt": "Abstract composition of light passing through colored glass, creating prismatic light patterns and rainbow reflections on a white surface, overlapping translucent shapes in shades of amber, ruby and sapphire, sharp geometric forms blurring into soft gradients, macro photography of crystal and glass surfaces, high contrast between bright light and deep shadows, ethereal and dreamlike, minimalistic with complex light play, vertical format, fine art photography style, warm and cool color contrast, digital art meets photography.",
+      "source": "全网精选"
+    },
+    {
+      "id": 14,
+      "title": "新中式茶室静物",
+      "tags": [
+        "新中式",
+        "茶道",
+        "静物"
+      ],
+      "prompt": "A minimalist new Chinese style tea setting on a dark wooden table, a celadon porcelain teapot with subtle crackle glaze, a small teacup with amber tea, a miniature bonsai beside it, a calligraphy brush resting on a bamboo mat, soft window light casting long shadows, smoked incense creating a thin trail of smoke, serene and meditative atmosphere, wabi-sabi aesthetic, earth tones of celadon green, wood brown and tea amber, 9:16 vertical composition, still life photography with a quiet zen atmosphere.",
+      "source": "全网精选"
+    },
+    {
+      "id": 15,
+      "title": "城市雨夜倒影",
+      "tags": [
+        "城市",
+        "夜景",
+        "雨"
+      ],
+      "prompt": "A city street at night after rain, the wet pavement reflecting colorful neon signs and street lights like a mirror, a person with a red umbrella walking away, buildings glowing in the background, raindrops on the camera lens creating dreamy bokeh circles, cinematic moody atmosphere, deep blues and purples with warm yellow light reflections, shallow depth of field, impressionistic feel, vertical 9:16 composition for social media, cyberpunk lite aesthetic with a romantic mood, Tokyo/Metro vibes.",
+      "source": "全网精选"
+    }
+  ],
+  "video": [
+    {
+      "id": 101,
+      "title": "晨雾茶园航拍",
+      "tags": [
+        "航拍",
+        "自然",
+        "晨景"
+      ],
+      "prompt": "A mesmerizing aerial drone shot over a misty tea plantation in the early morning, rows of vibrant green tea plants following the curves of rolling hills, a farmer in a conical hat walking through the mist carrying a basket, soft golden sunrise light breaking through the fog layer, birds flying in V-formation across the frame, slow smooth camera movement as if gliding over the landscape, mist swirling between the tea rows, peaceful and serene atmosphere, rich greens and soft gold tones, cinematic color grading, 9:16 vertical format, premium travel documentary quality.",
+      "source": "全网精选"
+    },
+    {
+      "id": 102,
+      "title": "街头咖啡师拉花",
+      "tags": [
+        "美食",
+        "手工",
+        "慢动作"
+      ],
+      "prompt": "Close up macro video of a skilled barista creating latte art, pouring steamed milk into a dark espresso shot forming a perfect rosetta pattern, the white milk swirling and expanding against the dark brown crema, steam rising from the cup, warm cafe background with soft bokeh, natural window light illuminating the process, steady handheld camera work, ASMR quality sound of milk pouring and ceramic cup on saucer, 9:16 vertical format, warm brown and cream color palette, cozy and satisfying slow-life aesthetic.",
+      "source": "全网精选"
+    },
+    {
+      "id": 103,
+      "title": "海边日落剪影",
+      "tags": [
+        "日落",
+        "海滩",
+        "剪影"
+      ],
+      "prompt": "A beautiful beach sunset timelapse transitioning from golden hour to twilight, silhouettes of people walking along the shoreline, waves gently rolling in with foam glowing in the last light, a pier extending into the ocean with a lighthouse at the end, clouds catching the orange and pink sunset colors, color shifting from warm orange to deep purple and navy blue, smooth camera pan following the horizon, romantic and serene atmosphere, 9:16 vertical format for social media, cinematic color grading, coastal vacation aesthetic.",
+      "source": "全网精选"
+    },
+    {
+      "id": 104,
+      "title": "陶艺手工制作",
+      "tags": [
+        "手工",
+        "艺术",
+        "慢动作"
+      ],
+      "prompt": "Close up shots of a potter's hands shaping wet clay on a spinning wheel, the clay transforming from a lump into an elegant vase, water and clay splashing gently, the potter's focused expression, close ups of textured hands and the smooth spinning clay, wooden pottery tools shaping the edges, natural north-facing window light casting soft shadows on the workspace, shelves in the background filled with finished ceramic pieces, slow and meditative pace, warm earth tones and natural materials, 9:16 vertical format, ASMR quality close ups of the clay sounds, minimalist aesthetic, zen-like calm atmosphere.",
+      "source": "全网精选"
+    },
+    {
+      "id": 105,
+      "title": "极简穿搭开箱",
+      "tags": [
+        "时尚",
+        "开箱",
+        "极简"
+      ],
+      "prompt": "Clean and minimal fashion lookbook video on a white studio background, model walking forward in a series of sophisticated monochrome outfits, smooth transitions between looks, each outfit displayed with a slow 360 degree spin showing details, soft box lighting creating even illumination with no shadows, subtle background music, occasional close up shots of fabric texture and accessories, neutral beige, cream, black and white color palette, Japanese minimalism meets high fashion, 9:16 vertical format for Instagram Reels, steady smooth gimbal work, premium fashion editorial aesthetic.",
+      "source": "全网精选"
+    },
+    {
+      "id": 106,
+      "title": "星空露营延时",
+      "tags": [
+        "露营",
+        "星空",
+        "自然"
+      ],
+      "prompt": "Mesmerizing night time-lapse at a remote mountain campsite, a small tent with warm orange light glowing from inside, the milky way rotating majestically overhead, shooting stars occasionally streaking across the frame, pine trees silhouetted against the starry sky, transition from twilight with purple-orange sky to deep night with brilliant stars, camera slowly pushing in towards the tent, fire embers rising from a campfire in the foreground, peaceful and awe-inspiring, deep blue and black with warm fire light, 9:16 vertical format, premium astro-photography quality, the vastness of space contrasted with the small warm tent.",
+      "source": "全网精选"
+    },
+    {
+      "id": 107,
+      "title": "书店里的猫",
+      "tags": [
+        "治愈",
+        "动物",
+        "日常"
+      ],
+      "prompt": "Cozy video tour of a charming independent bookstore with a resident orange cat, the cat walking gracefully between bookshelves, rubbing against vintage leather-bound books, jumping onto a window sill bathed in warm afternoon sunlight, close ups of the cat's whiskers in the golden light, shelves stuffed with books creating a warm cluttered background, a customer gently petting the cat, shots of the cat curled up sleeping on a stack of books, warm amber and cream color palette, 9:16 vertical format, gentle camera movements as if observing quietly, cozy library atmosphere, pure comfort content.",
+      "source": "全网精选"
+    }
+  ],
+  "work": [
+    {
+      "id": 201,
+      "title": "邮件撰写（正式汇报）",
+      "tags": [
+        "邮件",
+        "沟通",
+        "正式"
+      ],
+      "prompt": "你是一位专业的商务邮件撰写助手。请帮我写一封给[客户/领导]的邮件，主题是[XXX]。核心要点：1... 2... 3...。语气要求[正式/温和/紧迫]。请控制在一屏以内，段落清晰，结尾有明确的行动建议或下一步安排。如果有附件，请在正文中提及。",
+      "source": "实战精选"
+    },
+    {
+      "id": 202,
+      "title": "会议纪要整理",
+      "tags": [
+        "会议",
+        "整理",
+        "效率"
+      ],
+      "prompt": "你是一位会议记录专员。以下是一段会议录音转文字：[[粘贴内容]]。请按这个格式整理输出：① 会议主题/时间/参与人 ② 讨论事项（逐条列出，每项标注决策结果）③ 遗留问题 ④ 待办事项（负责人+截止时间）多用短句和要点，不要长段落。",
+      "source": "实战精选"
+    },
+    {
+      "id": 203,
+      "title": "周报/日报生成",
+      "tags": [
+        "汇报",
+        "周报",
+        "效率"
+      ],
+      "prompt": "根据我本周完成的工作：[[粘贴工作内容]]。请帮我写一份周报。要求：① 按「本周重点→常规工作→存在问题→下周计划」的结构 ② 重点事项用数据量化（如完成XX单、处理XX条）③ 问题部分只说事实，不写主观感受 ④ 全文控制在300字以内，领导能30秒看完。",
+      "source": "实战精选"
+    },
+    {
+      "id": 204,
+      "title": "数据分析简报",
+      "tags": [
+        "数据",
+        "分析",
+        "汇报"
+      ],
+      "prompt": "我有一组[某业务]数据：[[粘贴数据表格]]。请帮我：① 找出3个最明显的数据趋势或变化 ② 标记异常值或拐点 ③ 推测背后可能的业务原因 ④ 给1条可落地的行动建议。不要写分析废话和通用套话，结论优先。输出格式使用加粗标题+短句要点。",
+      "source": "实战精选"
+    },
+    {
+      "id": 205,
+      "title": "方案审阅/挑刺",
+      "tags": [
+        "方案",
+        "审阅",
+        "批判"
+      ],
+      "prompt": "请以挑剔的评审领导视角审阅以下方案：[[粘贴方案]]。只输出问题，不要夸奖。检查维度：① 逻辑是否有漏洞 ② 数据支撑是否充足 ③ 风险点是否有遗漏 ④ 执行可行性是否存疑。每条问题后面附带一条改进建议。语气直接、准确，不带情绪。",
+      "source": "实战精选"
+    },
+    {
+      "id": 206,
+      "title": "跨部门沟通消息",
+      "tags": [
+        "沟通",
+        "协作",
+        "跨部门"
+      ],
+      "prompt": "我需要向[XX部门]申请[资源/配合/信息]，对方可能不太配合。请帮我拟一段沟通消息。要求：① 先说对方能获得的好处或价值 ② 再提我的具体需求 ③ 尽量降低对方的执行成本（提供模板、整理好数据）④ 语气客气但不卑微，平等协作。控制在150字以内。",
+      "source": "实战精选"
+    },
+    {
+      "id": 207,
+      "title": "任务拆解与排期",
+      "tags": [
+        "任务",
+        "排期",
+        "管理"
+      ],
+      "prompt": "我接到一个任务：[[描述任务]]，截止日期是[日期]。请帮我：① 拆解成5-8个子任务 ② 标出每个子任务之间的依赖关系 ③ 标出可能翻车的风险点 ④ 按截止时间倒排，给出每天具体要做什么 ⑤ 至少预留1天buffer。输出为表格或清单格式。",
+      "source": "实战精选"
+    },
+    {
+      "id": 208,
+      "title": "PPT大纲/汇报框架",
+      "tags": [
+        "PPT",
+        "汇报",
+        "框架"
+      ],
+      "prompt": "我需要做一个关于[主题]的汇报，受众是[领导/客户/团队]，时长15分钟。请帮我生成PPT大纲。结构如下：封面（标题+一句话摘要）→ 目录（3-4个板块）→ 核心论点（每页一个论点，配1-2个数据支撑）→ 问题/挑战 → 行动建议 → Q&A。每页配一句Key Message（20字以内）。",
+      "source": "实战精选"
+    },
+    {
+      "id": 209,
+      "title": "写作润色/精炼",
+      "tags": [
+        "写作",
+        "润色",
+        "精炼"
+      ],
+      "prompt": "请帮我润色以下文案：[[粘贴原文]]。要求：① 让逻辑更通顺，段落衔接自然 ② 删掉所有废话、赘余表述、重复用词 ③ 保持专业但不生硬，像活人写的 ④ 保留原文的核心信息，不改原意。润色后附上一个简短的修改说明，列出改了哪些地方。",
+      "source": "实战精选"
+    },
+    {
+      "id": 210,
+      "title": "面试提问清单",
+      "tags": [
+        "面试",
+        "招聘",
+        "管理"
+      ],
+      "prompt": "针对[岗位名称]的面试，我需要考察候选人的[核心技能方向]。请用STAR法则帮我设计10个行为面试题，每个问题标注想考察的能力维度（如：解决问题能力、抗压能力、团队协作、专业深度）。再加3个可以快速筛选基础能力的封闭式问题。按「开场→核心技术→软技能→收尾」的顺序排列。",
+      "source": "实战精选"
+    },
+    {
+      "id": 211,
+      "title": "竞品分析框架",
+      "tags": [
+        "分析",
+        "竞品",
+        "模板"
+      ],
+      "prompt": "我需要对[产品/服务]做一份竞品分析。请帮我设计一个对比表格框架，包含以下维度：产品功能、定价策略、目标客群、营销渠道、用户口碑。每个维度写清楚：① 对比什么具体内容 ② 用什么标准打分（1-5分）③ 数据来源建议。最后附一个可以直接粘贴到Excel里的空白模板。",
+      "source": "实战精选"
+    },
+    {
+      "id": 212,
+      "title": "工作总结/复盘",
+      "tags": [
+        "复盘",
+        "总结",
+        "改进"
+      ],
+      "prompt": "基于以下信息做一份项目复盘：目标[XXX]、实际结果[XXX]、遇到问题[XXX]。输出结构如下：一、目标与结果对比（用数据说话）二、根因分析（区分内因/外因，每原因附带证据）三、做得好的（值得固化）四、做得不好的（改进方向）五、后续行动计划（具体到谁做什么）每部分不超过4行，用短句。附一个3个月后的追查时间点。",
+      "source": "实战精选"
+    },
+    {
+      "id": 213,
+      "title": "AI写会议通知",
+      "tags": [
+        "会议",
+        "通知",
+        "行政"
+      ],
+      "prompt": "请帮我写一封会议通知。主题：[XXX会议]。时间：[日期时间]。地点/线上链接：[XXX]。参会人：[XXX]。议程：①... ②... ③...。要求：① 开头说明为什么开这个会（背景和目的）② 议程写清楚每个环节的时间分配 ③ 结尾写清楚需要参会人提前准备什么 ④ 语言简洁，一看就懂。",
+      "source": "实战精选"
+    },
+    {
+      "id": 214,
+      "title": "日报/站会发言模板",
+      "tags": [
+        "日报",
+        "站会",
+        "敏捷"
+      ],
+      "prompt": "请根据我今天的工作内容：[[粘贴内容]]，帮我写一段60秒站立会的发言稿。结构：① 昨天做了什么（1句话+结果）② 今天要做什么（1-2件事）③ 需要什么支持/卡点（如果有）。控制在150字以内，口语化，适合快速轮着说。",
+      "source": "实战精选"
+    },
+    {
+      "id": 215,
+      "title": "领导汇报口头稿",
+      "tags": [
+        "汇报",
+        "沟通",
+        "口头"
+      ],
+      "prompt": "我需要向[领导]口头汇报[主题]，大概5分钟。请帮我写一份口语化的汇报稿。要求：① 开头30秒先说结论/核心请求（领导没耐心听铺垫）② 中间2分钟讲3个支撑点，每个配1个具体例子或数据 ③ 最后30秒明确提出下一步需要什么支持 ④ 不要书面语，像正常说话一样自然。",
+      "source": "实战精选"
+    }
+  ]
+}
