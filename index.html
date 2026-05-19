@@ -160,7 +160,7 @@ PromptHub · 数据来源自全网精选 · 仅供学习参考<br>
     grid.innerHTML = '<div class="loading"><div class="spinner"></div><div>正在加载提示词数据...</div></div>';
 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'data.json', true);
+    xhr.open('GET', 'data.json?v=20260519', true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
